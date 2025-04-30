@@ -1,50 +1,98 @@
-#!/bin/bash
+# 🐦 Birdify - Bird Sound Classification
 
-# 🐦 Birdify - Bird Sound Classification Setup Script
-# ---------------------------------------------------
-# This script will set up your development environment for Birdify
-# Includes both Windows (Git Bash) and macOS/Linux support
+## 🌟 Introduction
 
-echo -e "\n\033[1;36m🌿 Starting Birdify Setup\033[0m\n"
+**Birdify** is a machine learning project for classifying bird species through their sounds.  
+This guide will help you set up the development environment in just a few steps.
 
-# 1. Clone Repository
-echo -e "\033[1;34m🔽 Cloning Repository...\033[0m"
+---
+
+## 🛠️ Setup Guide
+
+### 📋 Prerequisites
+
+- Python **3.8+**
+- **Git**
+- Recommended IDE: **VS Code** or **PyCharm**
+
+---
+
+### 🚀 Installation Steps
+
+#### 1. Clone the Repository
+
+```bash
 git clone https://github.com/XavierRiera/Birdify.git
-cd Birdify || exit
+cd Birdify
+```
 
-# 2. Create Virtual Environment
-echo -e "\n\033[1;34m🛠️ Creating Virtual Environment...\033[0m"
-if [[ "$OSTYPE" == "msys" ]]; then
-    python -m venv .venv
-    source .venv/Scripts/activate
-else
-    python3 -m venv .venv
-    source .venv/bin/activate
-fi
+#### 2. Set Up Virtual Environment
 
-# 3. Install Dependencies
-echo -e "\n\033[1;34m📦 Installing Dependencies...\033[0m"
+**Windows:**
+
+```bash
+python -m venv .venv
+.venv\Scripts\activate
+```
+
+**macOS / Linux:**
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+#### 3. Install Dependencies
+
+```bash
 pip install --upgrade pip
 pip install -r requirements.txt
+```
 
-# 4. Optional Jupyter Setup
-echo -e "\n\033[1;33m💡 Optional Jupyter Notebook Setup\033[0m"
-read -p "Do you want to set up Jupyter Notebook? (y/n) " -n 1 -r
-echo
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-    pip install ipykernel
-    python -m ipykernel install --user --name=birdify-venv
-    echo -e "\033[1;32m✔ Jupyter kernel installed as 'birdify-venv'\033[0m"
-fi
+#### 4. Verify Installation
 
-# Completion Message
-echo -e "\n\033[1;32m🎉 Setup Completed Successfully!\033[0m"
-echo -e "\n\033[1mNext Steps:\033[0m"
-echo -e "1. To activate virtual environment later:"
-if [[ "$OSTYPE" == "msys" ]]; then
-    echo -e "   \033[1msource .venv/Scripts/activate\033[0m"
-else
-    echo -e "   \033[1msource .venv/bin/activate\033[0m"
-fi
-echo -e "2. To deactivate: \033[1mdeactivate\033[0m"
-echo -e "\n\033[3mHappy bird watching! 🦜\033[0m\n"
+```bash
+pip list
+```
+
+#### 5. Jupyter Notebook Setup (Optional)
+
+```bash
+pip install ipykernel
+python -m ipykernel install --user --name=birdify-venv
+```
+
+---
+
+## 🔄 Environment Management
+
+To deactivate the virtual environment:
+
+```bash
+deactivate
+```
+
+To reactivate:
+
+**Windows:**
+
+```bash
+.venv\Scripts\activate
+```
+
+**macOS / Linux:**
+
+```bash
+source .venv/bin/activate
+```
+
+---
+
+## 💡 Tips
+
+- ✅ Always activate your virtual environment before working on the project  
+- 🔄 Regularly update your dependencies  
+- 📦 After installing new packages, run:
+  ```bash
+  pip freeze > requirements.txt
+  ```
