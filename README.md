@@ -1,59 +1,66 @@
-# 🐦 Birdify - Bird Sound Classification
+🐦 Birdify - Bird Sound Classification
+🌟 Introduction
 
-## 📋 Project Structure
+Birdify is a machine learning project for classifying bird species through their sounds. This guide will help you set up the development environment.
 
-## 🛠️ Setup (Windows & macOS)
+🛠️ Setup Guide
 
-1. **Clone repo**  
-```bash
-git clone https://github.com/XavierRiera/Birdify/tree/main
-cd birdify
+📋 Prerequisites
 
+Python 3.8+
+Git
+Recommended IDE: VS Code or PyCharm
+🚀 Installation Steps
 
-# Birdify Project Setup Guide
+1. Clone the Repository
 
-## Development Environment Setup
-
-Follow these steps to set up your development environment for the Birdify project.
-
-### Prerequisites
-- Python 3.8 or higher
-- Git
-- Recommended: VS Code or PyCharm
-
-### 1. Clone the Repository
-```bash
+bash
 git clone https://github.com/XavierRiera/Birdify.git
 cd Birdify
+2. Set Up Virtual Environment
 
-### 2. Create Virtual Environment
+Windows
 
-* Windows:
+bash
 python -m venv .venv
 .venv\Scripts\activate
+macOS/Linux
 
-* macOS/Linux:
+bash
 python3 -m venv .venv
 source .venv/bin/activate
+3. Install Dependencies
 
-### 3. Install Dependencies
-
+bash
 pip install --upgrade pip
 pip install -r requirements.txt
+4. Verify Installation
 
-
-### 4. Verify Installation
+bash
 pip list
+5. Jupyter Notebook Setup (Optional)
 
-### 5. Jupyter Notebook Setup
+bash
 pip install ipykernel
 python -m ipykernel install --user --name=birdify-venv
+🔄 Environment Management
 
-### 6. To deactivate
+To deactivate virtual environment:
+
+bash
 deactivate
+To reactivate:
 
-### 6. To reactivate
-* Windows: 
+Windows
+
+bash
 .venv\Scripts\activate
-* macOS/Linux: 
+macOS/Linux
+
+bash
 source .venv/bin/activate
+💡 Tips
+
+Always activate your virtual environment before working on the project
+Keep your dependencies updated regularly
+Use pip freeze > requirements.txt to update requirements after adding new packages
