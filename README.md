@@ -96,3 +96,14 @@ source .venv/bin/activate
   ```bash
   pip freeze > requirements.txt
   ```
+## 👥  Contributors
+- Maheen Asad
+- Cinta Carot
+- Arnau Martín
+- Zat Pros
+- Silvia Riaño
+- Xavier Riera
+- Lluc Sayols
+
+## 📄  License
+The Birdify repository is released under the GNU General Public License v3.0 (GPL-3.0). This license grants users the freedom to run, study, share, and modify the software as long as derivative works also remain open and under the same license. The choice of GPL-3.0 aligns with the values of transparency, accessibility, and collaboration promoted by our team. It ensures that Birdify and any future improvements made by the community remain freely available and benefit the broader ecosystem of open-source bioacoustic tools.
