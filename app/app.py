@@ -1,6 +1,7 @@
 import streamlit as st
 import datetime
-from streamlit_audio_recorder.streamlit_audio_recorder import audio_recorder   
+from streamlit_webrtc import webrtc_streamer, WebRtcMode
+from st_audiorec import st_audiorec
 
 # Page setup
 st.set_page_config(page_title="Birdify - Bird Sound Classifier", layout="wide")
@@ -27,7 +28,7 @@ with col_logo1:
     st.image("https://www.upf.edu/image/company_logo?img_id=10601&t=1718038903187", width=120)
 with col_logo2:
     st.image("app/images/birdify-logo.png", width=120)
-
+    
 # Page title and description
 st.markdown("<br>", unsafe_allow_html=True)
 st.title("🐦 Birdify")
@@ -42,16 +43,27 @@ with col1:
 
 with col2:
     st.subheader("🎙️ Record Audio")
-    recorded_audio = audio_recorder(text="Click to record", icon_size="2x")
+    st.markdown("Click **Start** to begin recording. Click **Stop** to end.")
+    wav_audio_data = st_audiorec()
+
+    if wav_audio_data is not None:
+        st.audio(wav_audio_data, format='audio/wav')
+    '''audio_ctx = webrtc_streamer(
+        key="audio",
+        mode=WebRtcMode.SENDRECV,
+        rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
+        media_stream_constraints={"audio": True, "video": False},
+        async_processing=False,
+    )'''
 
 # Classification button
 if st.button("🔍 Classify"):
     if uploaded_file:
-        st.success("✅ Audio uploaded. Predicted Bird Species: European Robin")
+        st.success("✅ Audio uploaded.")
         st.audio(uploaded_file)
-    elif recorded_audio:
-        st.success("✅ Audio recorded. Predicted Bird Species: Eurasian Blackbird")
-        st.audio(recorded_audio, format="audio/wav")
+    elif audio_ctx.audio_receiver:
+        st.success("✅ Audio recorded. (⚠️ Save/download feature not active in this demo)")
+        st.info("Note: Real-time recording is active, but not yet saved as a file.")
     else:
         st.warning("⚠️ Please upload or record an audio file to classify.")
 else:
