@@ -1,0 +1,11 @@
+# Core Streamlit App
+streamlit==1.27.0
+
+# Audio recording
+git+https://github.com/stefanrmmr/streamlit-audio-recorder.git
+
+# Streamlit WebRTC (optional, if uncommented)
+streamlit-webrtc==0.45.0
+
+# Other dependencies
+datetime
