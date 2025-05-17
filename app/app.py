@@ -89,10 +89,9 @@ if st.button("🔍 Classify"):
 st.markdown("---")
 st.caption(f"Birdify Project • {datetime.datetime.now().year}")
 '''
-
 import streamlit as st
-from audio_utils import extract_features
-from model_loader import load_keras_model, load_pickle_model
+from utils.feature_extractor import extract_features
+from utils.model_loader import load_keras_model, load_pickle_model
 from app.prediction import predict_with_model
 from io import BytesIO
 import tempfile
