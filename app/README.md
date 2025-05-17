@@ -31,7 +31,7 @@ Birdify is a web-based app that allows users to identify bird species from audio
 4. Run the app:
    ```bash
    cd app
-   streamlit run app/app.py
+   streamlit run app.py
    ```
 
 ## 🔊 Audio Recorder
