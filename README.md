@@ -16,7 +16,7 @@ The core aim of Birdify is to make bird sound identification accessible and inte
 
 - Python **3.8+**
 - **Git**
-- Recommended IDE: **VS Code** or **PyCharm**
+- Recommended IDE: **VS Code**
 
 ---
 
