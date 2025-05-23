@@ -11,10 +11,11 @@ from utils.feature_extractor import extract_features
 from utils.model_loader import load_pickle_model
 from prediction import predict_with_model
 
-from streamlit_audiorec import st_audiorec
-
 # Declare the local Streamlit audio recorder component
-st_audiorec = st_audiorec()
+st_audiorec = components.declare_component(
+    "st_audiorec",
+    path="streamlit-audio-recorder/st_audiorec/frontend/build"
+)
 
 # Where the models are located
 MODEL_PATH = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "models", "best_stacked_model.pkl"))
