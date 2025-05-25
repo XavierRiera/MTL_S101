@@ -81,6 +81,12 @@ st.markdown("""
         color: #333333;
     }
 
+    /* IMAGE BORDER */
+    img {
+        border-radius: 12px;
+        border: 1px solid #d0e3ec;
+    }
+
     /* CAPTION TEXT */
     .stCaption {
         font-style: italic;
