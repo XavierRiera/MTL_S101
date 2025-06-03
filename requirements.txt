@@ -42,3 +42,13 @@ joblib==1.3.2
 # Version control
 gitpython==3.1.32
 setuptools==67.8.0
+
+# Audio recording
+git+https://github.com/stefanrmmr/streamlit-audio-recorder.git
+
+# Streamlit WebRTC (optional, if uncommented)
+streamlit-webrtc==0.45.1
+
+# Other dependencies
+datetime
+soundfile==0.12.1

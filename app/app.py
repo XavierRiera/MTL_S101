@@ -24,13 +24,12 @@ st.sidebar.image("https://www.upf.edu/image/company_logo?img_id=10601&t=17180389
 st.sidebar.title("🔍 Navigation")
 page = st.sidebar.radio("Go to", ["Bird Sound Classifier", "About Project"])
 
-st.image("images/birdify-logo3.png", width=400)
+st.image("data/images/birdify-logo3.png", width=400)
 
 #Design html
 st.markdown("""
     <style>
 
-    /* GLOBAL LAYOUT */
     .stApp {
         background-color: #e4edfe;
         font-family: 'Segoe UI', sans-serif;
@@ -41,13 +40,11 @@ st.markdown("""
         padding: 2rem 4rem;
     }
 
-    /* HEADINGS */
     h1, h2, h3 {
         color: #2a5d8f;
         font-weight: 700;
     }
 
-    /* SIDEBAR */
     .stSidebar {
         background-color: #e3f2fd !important;
         color: #2a5d8f;
@@ -57,7 +54,6 @@ st.markdown("""
         color: #2a5d8f;
     }
 
-    /* BUTTONS */
     .stButton > button {
         background-color: #5ba6b1;
         color: white;
@@ -81,26 +77,22 @@ st.markdown("""
         color: #333333;
     }
 
-    /* IMAGE BORDER */
     img {
         border-radius: 12px;
         border: 1px solid #d0e3ec;
     }
 
-    /* CAPTION TEXT */
     .stCaption {
         font-style: italic;
         color: #6e6e6e;
     }
 
-    /* HR LINE */
     hr {
         border: none;
         border-top: 1px solid #cccccc;
         margin: 2rem 0;
     }
 
-    /* LINKS */
     a {
         color: #327ba8 !important;
         text-decoration: none;
@@ -187,7 +179,7 @@ elif page == "Bird Sound Classifier":
             features = extract_features(tmp_path)
             if features is not None:
                 try:
-                    csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "data", "info_species.csv"))
+                    csv_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "data", "info_species.csv"))
                     bird_info_df = pd.read_csv(csv_path)
                     model = load_pickle_model(MODEL_PATH)
                     label_encoder = load_pickle_model(ENCODER_PATH)

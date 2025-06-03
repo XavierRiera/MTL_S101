@@ -17,7 +17,7 @@ Birdify is a web-based app that allows users to identify bird species from audio
    cd Birdify
    ```
 
-2. (Optional but recommended) Create a virtual environment:
+2. (Optional but recommended) Create a virtual environment if not created previously:
    ```bash
    python3.10 -m venv .venv
    source .venv/bin/activate  # On Windows use `.venv\Scripts\activate`
