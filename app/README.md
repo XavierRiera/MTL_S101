@@ -25,7 +25,7 @@ Birdify is a web-based app that allows users to identify bird species from audio
 
 3. Install dependencies:
    ```bash
-   pip install -r app/requirements.txt
+   pip install -r requirements.txt
    ```
 
 4. Run the app:

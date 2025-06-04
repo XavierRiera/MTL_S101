@@ -8,6 +8,7 @@ import tempfile
 import numpy as np
 import pandas as pd
 
+
 from utils.feature_extractor import extract_features
 from utils.model_loader import load_pickle_model
 from prediction import predict_with_model
@@ -135,24 +136,14 @@ if page == "About Project":
     📂 This tool is part of a final project of the usbject "Taller de Tecnologia Musical" at [UPF](https://www.upf.edu) to support applied AI in sound classification.
     """)
 
+
 elif page == "Bird Sound Classifier":
     st.markdown("#### Identify bird species from audio recordings using the best stacked model!")
+    
+    # File upload only (no recording)
+    st.subheader("📁 Upload Audio File")
+    uploaded_file = st.file_uploader("Upload a .wav file", type=["wav"])
 
-    # File upload and audio recording
-    col1, col2 = st.columns(2)
-    uploaded_file = None
-    wav_audio_data = None
-
-    with col1:
-        st.subheader("📁 Upload Audio File")
-        uploaded_file = st.file_uploader("Upload a .wav file", type=["wav"])
-
-    with col2:
-        st.subheader("🎙️ Record Audio")
-        st.markdown("Click the button to start and stop recording.")
-        wav_audio_data = st_audiorec()
-
-    # Classification logic
     st.markdown("---")
     if st.button("🔍 Classify"):
         tmp_path = None
@@ -161,19 +152,8 @@ elif page == "Bird Sound Classifier":
                 tmp.write(uploaded_file.read())
                 tmp_path = tmp.name
                 st.audio(uploaded_file)
-
-        elif wav_audio_data:
-            if isinstance(wav_audio_data.get("arr"), str) and "," in wav_audio_data["arr"]:
-                header, b64data = wav_audio_data["arr"].split(",")
-                audio_bytes = base64.b64decode(b64data)
-                audio_buffer = BytesIO(audio_bytes)
-                st.audio(audio_buffer, format="audio/wav")
-                with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp:
-                    tmp.write(audio_bytes)
-                    tmp_path = tmp.name
-            else:
-                st.error("⚠️ Recording returned unexpected format.")
-                tmp_path = None
+        else:
+            st.error("⚠️ Please upload a .wav audio file before classifying.")
 
         if tmp_path:
             features = extract_features(tmp_path)
@@ -183,22 +163,17 @@ elif page == "Bird Sound Classifier":
                     bird_info_df = pd.read_csv(csv_path)
                     model = load_pickle_model(MODEL_PATH)
                     label_encoder = load_pickle_model(ENCODER_PATH)
-                    
 
-                    # Show class probabilities if available
                     if hasattr(model, "predict_proba"):
                         probs = model.predict_proba(features)[0]
-                        # Sort top 3 predictions with prob > 0
                         top_index = np.argmax(probs)
                         species = label_encoder.inverse_transform([top_index])[0]
-                        
                         top_indices = np.argsort(probs)[::-1][:3]
                         top_preds = [(label_encoder.inverse_transform([i])[0], probs[i]) for i in top_indices if probs[i] > 0]
 
                         st.markdown("## 🐤 Top Predicted Birds")
 
                         for species, prob in top_preds:
-                            # Format confidence level
                             if prob >= 0.85:
                                 confidence_text = "✅ Very likely"
                             elif prob >= 0.5:
@@ -214,16 +189,13 @@ elif page == "Bird Sound Classifier":
 
                             bird = bird_row.iloc[0]
 
-                            # Begin layout in two columns
                             img_col, info_col = st.columns([1, 2])
 
                             with img_col:
                                 if pd.notna(bird["image"]):
                                     st.image(bird["image"], width=350)
-
                                 if pd.notna(bird["conservation_status"]):
                                     st.image(bird["conservation_status"], caption="Conservation Status", width=350)
-
                                 if pd.notna(bird["map_image"]) and bird["map_image"] != "-":
                                     st.image(bird["map_image"], caption="Distribution Map", width=300)
 
@@ -243,15 +215,8 @@ elif page == "Bird Sound Classifier":
 
                             st.markdown("---")
 
-
                 except Exception as e:
                     st.error(f"❌ Error during prediction: {e}")
-                    
             else:
                 st.warning("⚠️ Feature extraction failed. Please check the audio file.")
-        else:
-            st.error("⚠️ Please upload or record an audio file before classifying.")
-
-    st.markdown("---")
-    st.caption(f"Birdify Project • {datetime.datetime.now().year}")
 
