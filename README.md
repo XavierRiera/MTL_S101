@@ -99,6 +99,15 @@ source .venv/bin/activate
   ```bash
   pip freeze > requirements.txt
   ```
+
+---
+
+## 📁 Data and Sources
+
+- **Dataset:** [BirdCLEF subset from Kaggle](https://www.kaggle.com/datasets)  
+- **Species info:** Fetched live from [Wikipedia API](https://www.mediawiki.org/wiki/API:Main_page)
+
+---
 ## 👥  Contributors
 - Maheen Asad
 - Cinta Carot
