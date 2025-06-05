@@ -4,6 +4,10 @@
 
 **Birdify** is a machine learning project for classifying bird species through their sounds.  
 This guide will help you set up the development environment in just a few steps.
+It uses modern ML models and a Streamlit web interface to provide an accessible and interactive experience for users.
+
+This project was developed by a team of students as part of a university software engineering course.
+
 
 ## 🎯  Purpose
 The core aim of Birdify is to make bird sound identification accessible and interactive, promoting biodiversity awareness and supporting scientific and educational communities.
