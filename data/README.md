@@ -8,9 +8,6 @@ This directory contains all data resources used in **Birdify**, structured into 
 **File:** `Birds_Voice.csv`  
 This file contains the original bird vocalization metadata. 
 
-**File:** `birdcall_metadata_TOP50.csv`
-This file contains the final curated version of the bird vocalization metadata. It was carefully cleaned and filtered to ensure high-quality samples and reliable labels for training.
-
 #### 📄 CSV Columns
 
 | Column            | Description                                                                 |
@@ -28,7 +25,12 @@ This file contains the final curated version of the bird vocalization metadata. 
 
 This file was used as the foundation for preprocessing and feature extraction.
 
-### 📂 `features/` — Processed Feature Set
+### 📂 `processed/` — Processed Metadata
+
+**File:** `birdcall_metadata_TOP50.csv`
+This file contains the final curated version of the bird vocalization metadata. It was carefully preprocessed, segmented, cleaned and filtered to ensure high-quality samples and reliable labels for training.
+
+### 📂 `features/` — Final Feature Set for training
 
 **File:** `birdcall_features_TOP50.csv`  
 This file contains the final feature dataset used to train the best-performing models in Birdify. It includes feature vectors extracted from audio samples belonging to the **50 bird species** that yielded the highest classification accuracy.
